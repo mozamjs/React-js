@@ -1,12 +1,12 @@
 
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import "./App.css";
 
 
 const App = () => {
 
   const [counter, setcounter] = useState(0);
-  console.log(counter);
+  // console.log(counter);
 
   const increment = () => {
     setcounter(counter + 1)
@@ -17,6 +17,26 @@ const App = () => {
       setcounter(counter - 1)
     }
   }
+
+  // useEffect(()=>{
+  //   console.log("stat chal pari")
+  // })
+
+  // useEffect(()=>{
+  //   console.log("stat chal pari")
+  // },[])
+
+  // useEffect(()=>{
+  //   console.log("stat chal pari")
+  // },[counter])
+
+  useEffect(()=>{
+    console.log("Mount")
+    
+    return()=>{
+      console.log("unmount")
+    }
+  },[counter])
 
   return (
     <>
