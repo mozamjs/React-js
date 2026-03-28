@@ -1,0 +1,182 @@
+/* .parent{
+  height: 80vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+ 
+}
+.btn{
+  padding: 20px;
+  margin: 20px;
+  cursor: pointer;
+  
+}
+.inc{
+  background-color: blue;
+}
+.dec{
+  background-color: red;
+}
+.content{
+  font-size: 25px;
+} */
+
+
+/* Google Font */
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;800&display=swap');
+
+/* Reset */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: 'Poppins', sans-serif;
+}
+
+/* Background */
+body {
+  height: 100vh;
+  background: linear-gradient(-55deg, #141e30, #243b55, #1d2671, #c33764);
+  background-size: 400% 400%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #fff;
+  animation: gradientMove 5s ease infinite;
+
+}
+ 
+
+/* Animated gradient */
+@keyframes gradientMove {
+  0% { background-position: 0% 50%; }
+  50% { background-position: 100% 50%; }
+  100% { background-position: 0% 50%; }
+}
+
+/* App Wrapper */
+/* Optional wrapper */
+.app {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  
+}
+
+/* Title */
+h1 {
+  font-size: 2.5rem;
+  margin-bottom: 20px;
+  letter-spacing: 2px;
+  text-shadow: 0 5px 15px rgba(0,0,0,0.4);
+}
+
+/* Card Container */
+.parent {
+  width: 340px;
+  height: 320px;
+  backdrop-filter: blur(20px);
+  background: rgba(255, 255, 255, 0.08);
+  border-radius: 25px;
+  box-shadow: 
+    0 8px 32px rgba(0,0,0,0.3),
+    inset 0 0 10px rgba(255,255,255,0.1);
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+  align-items: center;
+  padding: 20px;
+  transition: 0.4s ease;
+  margin-top: 10px;
+}
+
+.parent:hover {
+  transform: translateY(-10px) scale(1.02);
+}
+
+/* Counter Display */
+.content {
+  font-size: 60px;
+  font-weight: 800;
+  text-shadow: 0 5px 20px rgba(0,0,0,0.5);
+  transition: 0.3s;
+}
+
+/* Buttons Row */
+.buttons {
+  display: flex;
+  gap: 25px;
+}
+
+/* 3D Bubble Button Base */
+.btn {
+  position: relative;
+  padding: 18px 28px;
+  border-radius: 50px;
+  border: none;
+  font-size: 22px;
+  font-weight: 600;
+  color: #fff;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  box-shadow: 
+    0 8px 0 rgba(0,0,0,0.3),
+    0 10px 20px rgba(0,0,0,0.4);
+}
+
+/* Bubble shine effect */
+.btn::before {
+  content: '';
+  position: absolute;
+  top: 8px;
+  left: 12px;
+  width: 30%;
+  height: 30%;
+  background: rgba(255,255,255,0.5);
+  border-radius: 50%;
+  filter: blur(5px);
+}
+
+/* Increment Button */
+.inc {
+  background: linear-gradient(145deg, #00c6ff, #0072ff);
+}
+
+/* Decrement Button */
+.dec {
+  background: linear-gradient(145deg, #ff416c, #ff4b2b);
+}
+
+/* Hover Effect */
+.btn:hover {
+  transform: translateY(-5px);
+  box-shadow: 
+    0 12px 0 rgba(0,0,0,0.25),
+    0 15px 25px rgba(0,0,0,0.5);
+}
+
+/* Click (3D press effect) */
+.btn:active {
+  transform: translateY(5px);
+  box-shadow: 
+    0 2px 0 rgba(0,0,0,0.3),
+    0 5px 10px rgba(0,0,0,0.3);
+}
+
+/* Responsive */
+@media (max-width: 400px) {
+  .parent {
+    width: 90%;
+    height: auto;
+    padding: 25px;
+  }
+
+  .content {
+    font-size: 45px;
+  }
+
+  .btn {
+    padding: 15px 22px;
+    font-size: 18px;
+  }
+}
