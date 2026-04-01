@@ -1,12 +1,11 @@
 import { useState } from "react";
 import "./App.css"
-const App = ()=> 
-{
- const [title, setTitle] = useState("");
-const [description, setDescription] = useState("");
+const App = () => {
+  const [title, setTitle] = useState("");
+  const [description, setDescription] = useState("");
   const [todo, setTodo] = useState([]);
 
-//AddTODO function
+  //AddTODO function
   const addTodo = (event) => {
     event.preventDefault();
 
@@ -20,7 +19,7 @@ const [description, setDescription] = useState("");
     setTitle("");
     setDescription("");
   };
-//Updation
+  //Updation
   const updateTodo = (action, index) => {
     if (action === "delete") {
       const updated = [...todo];
@@ -35,7 +34,7 @@ const [description, setDescription] = useState("");
   };
 
   return (
-    
+    <>
     <div className="app-container">
       <h1 className="heading">✨ Todo App</h1>
 
@@ -77,7 +76,7 @@ const [description, setDescription] = useState("");
                   onClick={() => updateTodo("update", index)}
                 >
                   ✏️
-                 </button>
+                </button>
               </div>
             </div>
           ))
@@ -86,13 +85,14 @@ const [description, setDescription] = useState("");
         )}
       </div>
     </div>
+    </>
   )
 }
 
 
 
 
-  
-  
+
+
 
 export default App
