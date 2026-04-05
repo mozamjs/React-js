@@ -132,39 +132,100 @@
 //api call
 
 
-import React, { useEffect, useState } from "react";
+// import React, { useEffect, useState } from "react";
 
-const App = () =>{
+// const App = () =>{
+//   const[loading, setLoading] = useState(true);
+//   const [error, setError] = useState(false);
+//   const [users, setUsers] = useState(null);
+
+//   useEffect(()=>{
+//       fetch('https://jsonplaceholder.typicode.com/users')
+//       .then(res => res.json())
+//       .then(res =>{
+//         console.log(res);
+//         setUsers(res)
+//       })
+//       .catch(err=>{
+//         setError(true)
+//       })
+//       .finally(()=>{
+//         setLoading(false)
+//       })
+//   },[])
+
+//   return(
+//     <>
+//       <h1>Hello world</h1>
+//       {loading && <h1>Loading...</h1>}
+//       {error && <h1>internal server error..</h1>}
+//       {users? users.map(item =>{
+//         return <h1 key={item.id}>{item.name}<br/>{item.email}</h1>
+//       }) :null}
+//     </>
+//   )
+// }
+// export default App
+
+
+
+
+import React, { useEffect , useState } from "react";
+
+const App = ()=>{
+
   const[loading, setLoading] = useState(true);
-  const [error, setError] = useState(false);
-  const [users, setUsers] = useState(null);
+  const [data, setData]= useState([])
+  const [err, setErr]=  useState(null)
 
-  useEffect(()=>{
-      fetch('https://jsonplaceholder.typicode.com/users')
-      .then(res => res.json())
-      .then(res =>{
-        console.log(res);
-        setUsers(res)
-      })
-      .catch(err=>{
-        setError(true)
-      })
-      .finally(()=>{
-        setLoading(false)
-      })
-  },[])
 
-  return(
-    <>
-      <h1>Hello world</h1>
-      {loading && <h1>Loading...</h1>}
-      {error && <h1>internal server error..</h1>}
-      {users? users.map(item =>{
-        return <h1 key={item.id}>{item.name}<br/>{item.email}</h1>
-      }) :null}
-    </>
-  )
-}
+useEffect(() => {
+  const getData = async () => {
+    try {
+      const res = await fetch("https://jsonplaceholder.typicode.com/users");
+      if(!res.ok){
+        throw new Error ("API failed");
+      }
+      const result = await res.json();
+      console.log(result);
+      setData(result)
+    } catch (error) {
+      console.log("Error:", error);
+      setErr(error.message)
+    }
+    finally{
+      setLoading(false)
+    }
+  };
+
+  getData();
+}, []);
+
+ 
+
+  return (
+<>
+    {loading && <h1>Loading...</h1>}
+    {err && <h1>Error:{err}</h1>}
+    
+   {data &&  
+   <>
+    <h1>Users List</h1>
+    {data.map((item) => (
+        <div key={item.id}>
+          <h3>{item.name}</h3>
+          <p>{item.email}</p>
+        </div>
+      ))} 
+      </>
+      }
+
+  </>
+  );
+};
+
+
+
 export default App
 
 
